@@ -267,7 +267,7 @@ const HomeAbout: React.FC = () => {
       className="mt-32 w-full max-w-5xl relative px-4"
     >
       <div className="absolute -inset-1 bg-gradient-to-r from-cosmic-cyan/20 via-purple-500/20 to-cosmic-cyan/20 blur-xl opacity-50" />
-      <div className="glass-panel p-8 md:p-12 rounded-3xl relative z-10 border border-white/10 m-auto">
+      <div className="md:glass-panel p-8 md:p-12 rounded-3xl relative z-10 md:border md:border-white/10 m-auto">
         <div className="flex flex-col md:flex-row gap-8 items-center">
           <div className="w-full md:w-1/3 flex justify-center">
             <div className="w-48 h-48 rounded-full border-2 border-cosmic-cyan/50 p-2 shadow-[0_0_30px_rgba(14,216,217,0.2)]">
@@ -277,7 +277,20 @@ const HomeAbout: React.FC = () => {
           <div className="w-full md:w-2/3 text-center md:text-left space-y-4">
             <h3 className="text-3xl font-orbitron text-white">ARCHITECT OF <span className="text-cosmic-cyan">DIGITAL REALITIES</span></h3>
             <p className="font-rajdhani text-lg text-gray-300 leading-relaxed">
-              a multitalented individual, drawing from my abstract mind as a passionate artist, pursuing athletic excellence, building innovative web applications as a programmer, crafting mind-twisting Fantasy stories and finding solace in creative poetry.             </p>
+              Myself, Navaneet, a multitalented individual, drawing from my abstract mind as a passionate artist, pursuing athletic excellence, building innovative web applications as a programmer, crafting mind-twisting Fantasy stories and finding solace in creative poetry.             </p>
+            <div className="flex ">
+              <a
+                href="https://drive.google.com/file/d/1o88O-le5TYjJXS6PDgFSpu2ftqlOcCrg/view?usp=sharing"
+                target="_blank"
+                rel="noreferrer"
+                className="group relative px-6 py-3 bg-cosmic-cyan text-black font-orbitron font-bold tracking-widest rounded-lg overflow-hidden hover:scale-105 transition-transform shadow-[0_0_20px_rgba(14,216,217,0.4)]"
+              >
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                <span className="relative z-10 flex items-center gap-2">
+                  DOWNLOAD RESUME <ExternalLink size={16} />
+                </span>
+              </a>
+            </div>
             <div className="pt-4 flex flex-wrap justify-center md:justify-start gap-3">
               <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-cosmic-cyan">REACT / NEXT.JS</span>
               <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-cosmic-cyan">MUN</span>
@@ -313,7 +326,7 @@ const Hero: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col items-center gap-3 mb-3"
+          className="flex flex-col items-center gap-3 mb-3 -mt-12"
         >
           <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-gray-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
             <MapPin size={12} className="text-cosmic-cyan" />
@@ -574,7 +587,7 @@ const ImageCarousel: React.FC<{ images: string[] }> = ({ images }) => {
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="relative w-full h-64 md:h-96 rounded-xl overflow-hidden border border-white/10 group mb-8">
+    <div className="relative w-full h-64 md:h-[34rem] rounded-xl overflow-hidden border border-white/10 group mb-8">
       <AnimatePresence mode="wait">
         <motion.img
           key={index}
@@ -622,14 +635,14 @@ const CodingDetailView: React.FC<{ project: Project; onBack: () => void }> = ({ 
 
         {/* Header Hierarchy: Logo -> Title -> Date */}
         <div className="flex flex-col items-center mb-10 text-center">
-          {project.logo && (
+          {project.logo && project.type !== 'FREELANCE' && (
             <motion.div
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               className="relative mb-6"
             >
               <div className="absolute inset-0 bg-cosmic-cyan blur-2xl opacity-20" />
-              <img src={project.logo} alt="Logo" className="w-24 h-24 rounded-2xl relative z-10 border border-white/10 shadow-[0_0_30px_rgba(14,216,217,0.3)]" />
+              <img src={project.logo} alt="Logo" className="w-24 h-24 rounded-2xl relative z-10 border border-white/10 shadow-[0_0_30px_rgba(14,216,217,0.3)] p-2" />
             </motion.div>
           )}
 
