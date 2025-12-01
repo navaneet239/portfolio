@@ -12,7 +12,7 @@ const AboutSection: React.FC = () => {
       className="mt-32 w-full max-w-5xl relative px-4"
     >
       <div className="absolute -inset-1 bg-gradient-to-r from-cosmic-cyan/20 via-purple-500/20 to-cosmic-cyan/20 blur-xl opacity-50" />
-      <div className="glass-panel p-8 md:p-12 rounded-3xl relative z-10 border border-white/10">
+      <div className="m-auto glass-panel p-8 md:p-12 rounded-3xl relative z-10 border border-white/10">
         <div className="flex flex-col md:flex-row gap-8 items-center">
           <div className="w-full md:w-1/3 flex justify-center">
              <div className="w-48 h-48 rounded-full border-2 border-cosmic-cyan/50 p-2 shadow-[0_0_30px_rgba(14,216,217,0.2)]">

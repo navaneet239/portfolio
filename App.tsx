@@ -5,7 +5,6 @@ import { Code, Palette, BookOpen, ArrowLeft, ExternalLink, X, ChevronLeft, Chevr
 
 import StarBackground from './components/StarBackground';
 import WarpTransition from './components/WarpTransition';
-import AboutSection from './components/AboutSection';
 import ScrollProgress from './components/ScrollProgress';
 
 import { CODING_PROJECTS, WRITING_WORKS, ARTWORKS, LOGO_URL, TRANSITION_DURATION } from './constants';
@@ -15,7 +14,7 @@ import { Project, WritingWork, Artwork } from './types';
 
 const LiquidGalaxyBackground: React.FC = () => {
   const { scrollY } = useScroll();
-  
+
   // Parallax transforms - different elements move at different speeds
   const yBlob1 = useTransform(scrollY, [0, 1000], [0, 300]);
   const yBlob2 = useTransform(scrollY, [0, 1000], [0, -200]);
@@ -37,7 +36,7 @@ const LiquidGalaxyBackground: React.FC = () => {
     <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10 bg-[#020205]">
       {/* Deep Space Base */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#0a0a12_0%,_#000_100%)] opacity-80" />
-      
+
       {/* Faint Stars Layer with Parallax */}
       <motion.div style={{ y: yStars }} className="absolute inset-0 z-0">
         {stars.map((star, i) => (
@@ -56,9 +55,9 @@ const LiquidGalaxyBackground: React.FC = () => {
       </motion.div>
 
       {/* Liquid Blobs with Parallax */}
-      <motion.div 
+      <motion.div
         style={{ y: yBlob1 }}
-        animate={{ 
+        animate={{
           scale: [1, 1.1, 0.9, 1],
           x: [-50, 50, -30, -50],
           rotate: [0, 45, 90, 0]
@@ -66,10 +65,10 @@ const LiquidGalaxyBackground: React.FC = () => {
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-purple-900/20 blur-[100px] rounded-full mix-blend-screen opacity-60"
       />
-      
-      <motion.div 
+
+      <motion.div
         style={{ y: yBlob2 }}
-        animate={{ 
+        animate={{
           scale: [1.1, 0.9, 1.1],
           x: [30, -30, 30],
         }}
@@ -77,28 +76,28 @@ const LiquidGalaxyBackground: React.FC = () => {
         className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-blue-900/20 blur-[120px] rounded-full mix-blend-screen opacity-50"
       />
 
-      <motion.div 
+      <motion.div
         style={{ y: yBlob3 }}
-        animate={{ 
+        animate={{
           scale: [1, 1.3, 1],
           opacity: [0.2, 0.4, 0.2],
         }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[40vw] h-[40vw] bg-cosmic-cyan/10 blur-[90px] rounded-full mix-blend-screen"
       />
-      
+
       {/* Noise Texture for Realism */}
-      <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" 
-           style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} 
+      <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay"
+        style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }}
       />
     </div>
   );
 };
 
-const HoloCard: React.FC<{ 
-  title: string; 
-  subtitle: string; 
-  icon: React.ReactNode; 
+const HoloCard: React.FC<{
+  title: string;
+  subtitle: string;
+  icon: React.ReactNode;
   onClick: () => void;
   delay: number;
 }> = ({ title, subtitle, icon, onClick, delay }) => {
@@ -142,17 +141,17 @@ const HoloCard: React.FC<{
       >
         {/* Hover Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-cosmic-cyan/10 via-transparent to-purple-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        
+
         {/* Corner Accents */}
         <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-white/20 group-hover:border-cosmic-cyan transition-colors" />
         <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-white/20 group-hover:border-cosmic-cyan transition-colors" />
 
         {/* Content */}
         <div className="relative h-full flex flex-col items-center justify-center p-8 text-center z-10">
-          
-          <motion.div 
+
+          <motion.div
             whileHover={{ scale: 1.1, rotate: 5 }}
-            className="p-5 rounded-full bg-white/5 border border-white/10 mb-6 text-white group-hover:text-cosmic-cyan group-hover:border-cosmic-cyan/50 group-hover:rounded-3xl group-hover:rotate-12 transition-all duration-250 shadow-[0_0_20px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_30px_rgba(14,216,217,0.3)]"
+            className="p-5 rounded-full bg-white/5 border border-white/10 mb-6 text-white group-hover:text-cosmic-cyan group-hover:border-cosmic-cyan/50 group-hover:rotate-12 transition-all duration-250 shadow-[0_0_20px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_30px_rgba(14,216,217,0.3)]"
           >
             {React.cloneElement(icon as React.ReactElement<any>, { size: 40 })}
           </motion.div>
@@ -175,12 +174,12 @@ const HoloCard: React.FC<{
 
 const SubpageNavbar: React.FC<{ title: string; onBack: () => void }> = ({ title, onBack }) => {
   return (
-    <motion.div 
+    <motion.div
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className="fixed top-0 left-0 right-0 h-24 z-40 bg-black/60 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-6 md:px-12"
     >
-      <button 
+      <button
         onClick={() => {
           window.scrollTo({ top: 0, behavior: "smooth" });
           onBack();
@@ -188,7 +187,7 @@ const SubpageNavbar: React.FC<{ title: string; onBack: () => void }> = ({ title,
         className="flex items-center gap-2 text-gray-400 hover:text-cosmic-cyan transition-colors group"
       >
         <div className="p-2 rounded-full border border-white/10 group-hover:border-cosmic-cyan transition-colors bg-white/5">
-           <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+          <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
         </div>
         <span className="font-orbitron hidden md:inline">RETURN TO HUB</span>
       </button>
@@ -198,10 +197,10 @@ const SubpageNavbar: React.FC<{ title: string; onBack: () => void }> = ({ title,
       </h1>
 
       <div className="w-10 md:w-auto flex justify-end">
-        <img 
-          src={LOGO_URL} 
-          alt="NPJ Logo" 
-          className="w-12 h-12 rounded-full border border-white/20 shadow-[0_0_15px_rgba(14,216,217,0.3)] hover:scale-110 transition-transform cursor-pointer" 
+        <img
+          src={LOGO_URL}
+          alt="NPJ Logo"
+          className="w-12 h-12 rounded-full border border-white/20 shadow-[0_0_15px_rgba(14,216,217,0.3)] hover:scale-110 transition-transform cursor-pointer"
         />
       </div>
     </motion.div>
@@ -213,14 +212,14 @@ const CosmicFooter: React.FC = () => {
     <div className="relative mt-32 w-full overflow-hidden border-t border-white/10 bg-black/80 backdrop-blur-xl">
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cosmic-cyan/5 to-transparent animate-pulse" />
       <div className="max-w-7xl mx-auto px-6 py-12 relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
-        
+
         <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
-          <motion.img 
+          <motion.img
             whileHover={{ rotate: 180 }}
             transition={{ duration: 1 }}
-            src={LOGO_URL} 
-            alt="NPJ Logo" 
-            className="w-20 h-20 rounded-full border-2 border-cosmic-cyan/50 shadow-[0_0_30px_rgba(14,216,217,0.3)]" 
+            src={LOGO_URL}
+            alt="NPJ Logo"
+            className="w-20 h-20 rounded-full border-2 border-cosmic-cyan/50 shadow-[0_0_30px_rgba(14,216,217,0.3)]"
           />
           <div>
             <h4 className="font-orbitron text-2xl text-white mb-2">J. NAVANEET</h4>
@@ -229,21 +228,28 @@ const CosmicFooter: React.FC = () => {
         </div>
 
         <div className="flex gap-6">
-          <a href="#" className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-cosmic-cyan hover:border-cosmic-cyan hover:scale-110 transition-all">
+          <a href="https://github.com/navaneet239" className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-cosmic-cyan hover:border-cosmic-cyan hover:scale-110 transition-all">
             <Github size={20} />
           </a>
-          <a href="#" className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-cosmic-cyan hover:border-cosmic-cyan hover:scale-110 transition-all">
+          <a href="https://www.linkedin.com/in/npj2309/" className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-cosmic-cyan hover:border-cosmic-cyan hover:scale-110 transition-all">
             <Linkedin size={20} />
           </a>
-          <a href="#" className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-cosmic-cyan hover:border-cosmic-cyan hover:scale-110 transition-all">
+          <a href="https://www.instagram.com/nav_pj2309/" target="_blank" rel="noreferrer" className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-cosmic-cyan hover:border-cosmic-cyan hover:scale-110 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://x.com/npj2309" className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-cosmic-cyan hover:border-cosmic-cyan hover:scale-110 transition-all">
             <Twitter size={20} />
           </a>
-          <a href="#" className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-cosmic-cyan hover:border-cosmic-cyan hover:scale-110 transition-all">
+          <a href="mailto:npj2309@gmail.com" className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-cosmic-cyan hover:border-cosmic-cyan hover:scale-110 transition-all">
             <Mail size={20} />
           </a>
         </div>
       </div>
-      
+
       <div className="text-center py-4 border-t border-white/5 text-xs font-mono text-gray-600">
         © 2022-25 J. NAVANEET. ALL RIGHTS RESERVED.
       </div>
@@ -253,7 +259,7 @@ const CosmicFooter: React.FC = () => {
 
 const HomeAbout: React.FC = () => {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -261,24 +267,24 @@ const HomeAbout: React.FC = () => {
       className="mt-32 w-full max-w-5xl relative px-4"
     >
       <div className="absolute -inset-1 bg-gradient-to-r from-cosmic-cyan/20 via-purple-500/20 to-cosmic-cyan/20 blur-xl opacity-50" />
-      <div className="glass-panel p-8 md:p-12 rounded-3xl relative z-10 border border-white/10">
+      <div className="glass-panel p-8 md:p-12 rounded-3xl relative z-10 border border-white/10 m-auto">
         <div className="flex flex-col md:flex-row gap-8 items-center">
           <div className="w-full md:w-1/3 flex justify-center">
-             <div className="w-48 h-48 rounded-full border-2 border-cosmic-cyan/50 p-2 shadow-[0_0_30px_rgba(14,216,217,0.2)]">
-               <img src="pic.jpg" alt="Profile" className="w-full h-full rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
-             </div>
+            <div className="w-48 h-48 rounded-full border-2 border-cosmic-cyan/50 p-2 shadow-[0_0_30px_rgba(14,216,217,0.2)]">
+              <img src="https://res.cloudinary.com/dd3r9iubi/image/upload/v1764548197/pic_o64rza.jpg" alt="Profile" className="w-full h-full rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+            </div>
           </div>
           <div className="w-full md:w-2/3 text-center md:text-left space-y-4">
-             <h3 className="text-3xl font-orbitron text-white">ARCHITECT OF <span className="text-cosmic-cyan">DIGITAL REALITIES</span></h3>
-             <p className="font-rajdhani text-lg text-gray-300 leading-relaxed">
-               I am a multidisciplinary creator blurring the lines between logic and imagination. Based in the UK, I specialize in building immersive web experiences, crafting complex software systems, and weaving narratives that transcend the screen. My mission is to turn abstract concepts into tangible, interactive universes.
-             </p>
-             <div className="pt-4 flex flex-wrap justify-center md:justify-start gap-3">
-               <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-cosmic-cyan">REACT / NEXT.JS</span>
-               <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-cosmic-cyan">WEBGL / THREE.JS</span>
-               <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-cosmic-cyan">UI / UX DESIGN</span>
-               <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-cosmic-cyan">CREATIVE WRITING</span>
-             </div>
+            <h3 className="text-3xl font-orbitron text-white">ARCHITECT OF <span className="text-cosmic-cyan">DIGITAL REALITIES</span></h3>
+            <p className="font-rajdhani text-lg text-gray-300 leading-relaxed">
+              a multitalented individual, drawing from my abstract mind as a passionate artist, pursuing athletic excellence, building innovative web applications as a programmer, crafting mind-twisting Fantasy stories and finding solace in creative poetry.             </p>
+            <div className="pt-4 flex flex-wrap justify-center md:justify-start gap-3">
+              <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-cosmic-cyan">REACT / NEXT.JS</span>
+              <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-cosmic-cyan">MUN</span>
+              <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-cosmic-cyan">ART</span>
+              <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-cosmic-cyan">UI / UX DESIGN</span>
+              <span className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-mono text-cosmic-cyan">CREATIVE WRITING</span>
+            </div>
           </div>
         </div>
       </div>
@@ -291,9 +297,9 @@ const HomeAbout: React.FC = () => {
 // 1. Hero View
 const Hero: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) => {
   return (
-    <motion.div 
-      initial={{ opacity: 0 }} 
-      animate={{ opacity: 1 }} 
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
       className="min-h-screen flex flex-col items-center relative z-10 overflow-hidden"
     >
@@ -301,7 +307,7 @@ const Hero: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) 
 
       {/* Main Content Container */}
       <div className="text-center flex flex-col -mt-4 mb-4 justify-center relative z-10 px-4 max-w-7xl mx-auto w-full h-screen">
-        
+
         {/* Top Tagline */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -318,10 +324,10 @@ const Hero: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) 
 
         {/* Main Title */}
         <div className="relative mb-3">
-          <motion.h1 
+          <motion.h1
             className="flex flex-col items-center justify-center font-orbitron font-black tracking-tighter leading-[0.9]"
           >
-            <motion.span 
+            <motion.span
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
@@ -329,8 +335,8 @@ const Hero: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) 
             >
               NAVANEET
             </motion.span>
-            
-            <motion.span 
+
+            <motion.span
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
@@ -354,7 +360,7 @@ const Hero: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) 
           </h2>
           <div className="h-[1px] w-24 bg-gradient-to-r from-transparent via-cosmic-cyan to-transparent my-2" />
           <p className="font-rajdhani text-gray-400 text-sm md:text-lg tracking-wide uppercase">
-           Entreprenuer <span className="text-cosmic-cyan mx-2">•</span> Coding <span className="text-cosmic-cyan mx-2">•</span> Art <span className="text-cosmic-cyan mx-2">•</span> Narrative
+            Entreprenuer <span className="text-cosmic-cyan mx-2">•</span> Coding <span className="text-cosmic-cyan mx-2">•</span> Art <span className="text-cosmic-cyan mx-2">•</span> Narrative
           </p>
         </motion.div>
 
@@ -380,35 +386,35 @@ const Hero: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) 
 
       {/* Navigation Cards */}
       <motion.div
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-20%" }}
-      transition={{ delay: 0.75, duration: 0.5, type: "spring" }}>
-      <p className="font-rajdhani text-gray-400 text-sm md:text-lg tracking-wide uppercase">
-        Navigate to the Galaxy you wish to explore:
-      </p>
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-20%" }}
+        transition={{ delay: 0.75, duration: 0.5, type: "spring" }}>
+        <p className="font-rajdhani text-gray-400 text-sm md:text-lg tracking-wide uppercase">
+          Navigate to the Galaxy you wish to explore:
+        </p>
       </motion.div>
       <div className="flex flex-col md:flex-row gap-6 lg:gap-10 items-center justify-center w-full max-w-7xl px-6 py-8 perspective-1000">
-        <HoloCard 
-          title="VISUAL ARRAYS" 
+        <HoloCard
+          title="VISUAL ARRAYS"
           subtitle="Digital & Traditional Artworks"
-          icon={<Palette />} 
+          icon={<Palette />}
           delay={0.8}
-          onClick={() => onNavigate('/artworks')} 
+          onClick={() => onNavigate('/artworks')}
         />
-        <HoloCard 
-          title="NEURAL NETWORKS" 
+        <HoloCard
+          title="NEURAL NETWORKS"
           subtitle="Coding Projects & Ventures"
-          icon={<Cpu />} 
+          icon={<Cpu />}
           delay={1.0}
-          onClick={() => onNavigate('/coding')} 
+          onClick={() => onNavigate('/coding')}
         />
-        <HoloCard 
-          title="DATA ARCHIVES" 
+        <HoloCard
+          title="DATA ARCHIVES"
           subtitle="Writing & Lore"
-          icon={<Feather />} 
+          icon={<Feather />}
           delay={1.2}
-          onClick={() => onNavigate('/writing')} 
+          onClick={() => onNavigate('/writing')}
         />
       </div>
 
@@ -456,7 +462,7 @@ const ArtworksView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -465,7 +471,7 @@ const ArtworksView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       <ScrollProgress />
       <SubpageNavbar title="VISUAL ARRAYS" onBack={onBack} />
       <LiquidGalaxyBackground />
-      
+
       <div className="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[250px]">
           {ARTWORKS.map((art: Artwork, index) => (
@@ -478,8 +484,8 @@ const ArtworksView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
               className={`group relative overflow-hidden rounded-xl border border-white/10 cursor-pointer ${getBentoClass(index)}`}
             >
               <div className="absolute inset-0 bg-cosmic-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 mix-blend-overlay" />
-              <img 
-                src={art.url} 
+              <img
+                src={art.url}
                 alt={art.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -490,7 +496,6 @@ const ArtworksView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             </motion.div>
           ))}
         </div>
-        <AboutSection />
       </div>
 
       {/* Lightbox Modal */}
@@ -503,21 +508,21 @@ const ArtworksView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-lg p-4"
             onClick={closeModal}
           >
-            <button 
+            <button
               className="absolute top-6 right-6 text-white/70 hover:text-cosmic-cyan transition-colors z-[110]"
               onClick={closeModal}
             >
               <X size={32} />
             </button>
 
-            <button 
+            <button
               className="absolute left-4 md:left-12 top-1/2 -translate-y-1/2 text-white/70 hover:text-cosmic-cyan transition-colors z-[110] hidden md:block"
               onClick={showPrev}
             >
               <ChevronLeft size={48} />
             </button>
 
-            <div 
+            <div
               className="relative max-w-7xl max-h-[90vh] flex flex-col items-center pointer-events-auto"
               onClick={(e) => e.stopPropagation()}
             >
@@ -529,7 +534,7 @@ const ArtworksView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 alt={ARTWORKS[selectedIndex].title}
                 className="max-h-[80vh] w-auto object-contain rounded-lg shadow-[0_0_50px_rgba(14,216,217,0.15)] border border-white/10"
               />
-              <motion.div 
+              <motion.div
                 key={`text-${selectedIndex}`}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -539,17 +544,17 @@ const ArtworksView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
               </motion.div>
             </div>
 
-            <button 
+            <button
               className="absolute right-4 md:right-12 top-1/2 -translate-y-1/2 text-white/70 hover:text-cosmic-cyan transition-colors z-[110] hidden md:block"
               onClick={showNext}
             >
               <ChevronRight size={48} />
             </button>
-            
+
             {/* Mobile Navigation */}
             <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-12 md:hidden z-[110] pointer-events-auto">
-               <button onClick={showPrev} className="text-white/70 hover:text-cosmic-cyan p-4"><ChevronLeft size={32}/></button>
-               <button onClick={showNext} className="text-white/70 hover:text-cosmic-cyan p-4"><ChevronRight size={32}/></button>
+              <button onClick={showPrev} className="text-white/70 hover:text-cosmic-cyan p-4"><ChevronLeft size={32} /></button>
+              <button onClick={showNext} className="text-white/70 hover:text-cosmic-cyan p-4"><ChevronRight size={32} /></button>
             </div>
           </motion.div>
         )}
@@ -571,7 +576,7 @@ const ImageCarousel: React.FC<{ images: string[] }> = ({ images }) => {
   return (
     <div className="relative w-full h-64 md:h-96 rounded-xl overflow-hidden border border-white/10 group mb-8">
       <AnimatePresence mode="wait">
-        <motion.img 
+        <motion.img
           key={index}
           src={images[index]}
           initial={{ opacity: 0, scale: 1.1 }}
@@ -582,7 +587,7 @@ const ImageCarousel: React.FC<{ images: string[] }> = ({ images }) => {
         />
       </AnimatePresence>
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
-      
+
       {/* Controls */}
       <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-cosmic-cyan hover:text-black transition-all backdrop-blur-sm border border-white/20">
         <ChevronLeft />
@@ -590,7 +595,7 @@ const ImageCarousel: React.FC<{ images: string[] }> = ({ images }) => {
       <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-cosmic-cyan hover:text-black transition-all backdrop-blur-sm border border-white/20">
         <ChevronRight />
       </button>
-      
+
       {/* Indicators */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
         {images.map((_, i) => (
@@ -617,25 +622,25 @@ const CodingDetailView: React.FC<{ project: Project; onBack: () => void }> = ({ 
 
         {/* Header Hierarchy: Logo -> Title -> Date */}
         <div className="flex flex-col items-center mb-10 text-center">
-           {project.logo && (
-             <motion.div 
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                className="relative mb-6"
-             >
-               <div className="absolute inset-0 bg-cosmic-cyan blur-2xl opacity-20" />
-               <img src={project.logo} alt="Logo" className="w-24 h-24 rounded-2xl relative z-10 border border-white/10 shadow-[0_0_30px_rgba(14,216,217,0.3)]" />
-             </motion.div>
-           )}
-           
-           <h1 className="text-4xl md:text-6xl font-orbitron font-bold text-white mb-4 text-glow tracking-wide uppercase">
-             {project.title}
-           </h1>
-           
-           <div className="flex items-center gap-3 text-cosmic-cyan font-mono border border-cosmic-cyan/30 px-4 py-1.5 rounded-full bg-cosmic-cyan/5">
-              <Calendar size={16} />
-              <span>COMMENCED: {project.startDate || 'UNKNOWN'}</span>
-           </div>
+          {project.logo && (
+            <motion.div
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              className="relative mb-6"
+            >
+              <div className="absolute inset-0 bg-cosmic-cyan blur-2xl opacity-20" />
+              <img src={project.logo} alt="Logo" className="w-24 h-24 rounded-2xl relative z-10 border border-white/10 shadow-[0_0_30px_rgba(14,216,217,0.3)]" />
+            </motion.div>
+          )}
+
+          <h1 className="text-4xl md:text-6xl font-orbitron font-bold text-white mb-4 text-glow tracking-wide uppercase">
+            {project.title}
+          </h1>
+
+          <div className="flex items-center gap-3 text-cosmic-cyan font-mono border border-cosmic-cyan/30 px-4 py-1.5 rounded-full bg-cosmic-cyan/5">
+            <Calendar size={16} />
+            <span>COMMENCED: {project.startDate || 'UNKNOWN'}</span>
+          </div>
         </div>
 
         {/* Carousel */}
@@ -643,44 +648,43 @@ const CodingDetailView: React.FC<{ project: Project; onBack: () => void }> = ({ 
 
         {/* CTA */}
         <div className="flex justify-center mb-12">
-           <a 
-             href={project.link || "#"} 
-             target="_blank" 
-             rel="noreferrer"
-             className="group relative px-8 py-4 bg-cosmic-cyan text-black font-orbitron font-bold tracking-widest rounded-lg overflow-hidden hover:scale-105 transition-transform shadow-[0_0_30px_rgba(14,216,217,0.4)]"
-           >
-             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-             <span className="relative z-10 flex items-center gap-2">
-               INITIALIZE SYSTEM <ExternalLink size={18} />
-             </span>
-           </a>
+          <a
+            href={project.link || "#"}
+            target="_blank"
+            rel="noreferrer"
+            className="group relative px-8 py-4 bg-cosmic-cyan text-black font-orbitron font-bold tracking-widest rounded-lg overflow-hidden hover:scale-105 transition-transform shadow-[0_0_30px_rgba(14,216,217,0.4)]"
+          >
+            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            <span className="relative z-10 flex items-center gap-2">
+              INITIALIZE SYSTEM <ExternalLink size={18} />
+            </span>
+          </a>
         </div>
 
         {/* Description & Tech */}
         <div className="grid md:grid-cols-3 gap-8">
-           <div className="md:col-span-2 glass-panel p-8 rounded-2xl border border-white/10">
-              <h3 className="text-2xl font-orbitron text-white mb-6 flex items-center gap-2">
-                <Terminal className="text-cosmic-cyan" /> SYSTEM ARCHITECTURE
-              </h3>
-              <p className="font-rajdhani text-lg leading-relaxed text-gray-300">
-                {project.longDescription || project.description}
-              </p>
-           </div>
+          <div className="md:col-span-2 glass-panel p-8 rounded-2xl border border-white/10">
+            <h3 className="text-2xl font-orbitron text-white mb-6 flex items-center gap-2">
+              <Terminal className="text-cosmic-cyan" /> SYSTEM ARCHITECTURE
+            </h3>
+            <p className="font-rajdhani text-lg leading-relaxed text-gray-300">
+              {project.longDescription || project.description}
+            </p>
+          </div>
 
-           <div className="glass-panel p-8 rounded-2xl border border-white/10 h-fit">
-              <h3 className="text-xl font-orbitron text-white mb-6">TECH STACK</h3>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map(t => (
-                  <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 rounded text-sm font-mono text-cosmic-cyan hover:bg-cosmic-cyan/10 transition-colors">
-                    {t}
-                  </span>
-                ))}
-              </div>
-           </div>
+          <div className="glass-panel p-8 rounded-2xl border border-white/10 h-fit">
+            <h3 className="text-xl font-orbitron text-white mb-6">TECH STACK</h3>
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map(t => (
+                <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 rounded text-sm font-mono text-cosmic-cyan hover:bg-cosmic-cyan/10 transition-colors">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
 
       </div>
-      <AboutSection />
     </motion.div>
   );
 }
@@ -692,7 +696,7 @@ const CodingView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const filteredProjects = CODING_PROJECTS.filter(p => filter === 'ALL' || p.type === filter);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, x: 100 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -100 }}
@@ -706,7 +710,7 @@ const CodingView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
         {selectedProject ? (
           <CodingDetailView key="detail" project={selectedProject} onBack={() => setSelectedProject(null)} />
         ) : (
-          <motion.div 
+          <motion.div
             key="list"
             className="pt-32 pb-24 px-6 md:px-12"
             initial={{ opacity: 0 }}
@@ -718,11 +722,10 @@ const CodingView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 <button
                   key={f}
                   onClick={() => setFilter(f as any)}
-                  className={`px-6 py-2 rounded-full font-rajdhani font-bold tracking-wider transition-all border ${
-                    filter === f 
-                      ? 'bg-cosmic-cyan text-black border-cosmic-cyan shadow-[0_0_15px_#0ed8d9]' 
+                  className={`px-6 py-2 rounded-full font-rajdhani font-bold tracking-wider transition-all border ${filter === f
+                      ? 'bg-cosmic-cyan text-black border-cosmic-cyan shadow-[0_0_15px_#0ed8d9]'
                       : 'bg-black/40 text-gray-400 border-white/20 hover:border-cosmic-cyan hover:text-white'
-                  }`}
+                    }`}
                 >
                   {f.replace('_', ' ')}
                 </button>
@@ -757,13 +760,12 @@ const CodingView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                       ))}
                     </div>
                     <div className="pt-4 border-t border-white/10 flex items-center text-cosmic-cyan font-orbitron text-sm tracking-wider group-hover:translate-x-1 transition-transform">
-                       ACCESS SYSTEM <ChevronRight size={14} className="ml-1" />
+                      ACCESS SYSTEM <ChevronRight size={14} className="ml-1" />
                     </div>
                   </motion.div>
                 ))}
               </AnimatePresence>
             </div>
-            <AboutSection />
           </motion.div>
         )}
       </AnimatePresence>
@@ -788,42 +790,53 @@ const WritingDetailView: React.FC<{ work: WritingWork; onBack: () => void }> = (
         </button>
 
         <div className="glass-panel p-8 md:p-12 rounded-2xl border border-white/10 relative overflow-hidden">
-           {/* Decorative Backdrops */}
-           <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-             {work.type === 'BOOK' ? <Book size={150} className="text-white" /> : <Terminal size={150} className="text-white" />}
-           </div>
-           
-           <motion.div
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ delay: 0.2 }}
-           >
-             <h2 className="text-4xl md:text-5xl font-orbitron text-white mb-2 text-glow">{work.title}</h2>
-             
-             <div className="flex flex-wrap items-center gap-4 text-gray-400 font-mono text-sm mb-8 border-b border-white/10 pb-6">
-               <span className="flex items-center gap-1"><Calendar size={14}/> {work.year}</span>
-               <span className="px-2 py-0.5 rounded bg-white/10 text-cosmic-cyan">{work.type}</span>
-               <span className="flex items-center gap-1"><Clock size={14}/> {work.type === 'BOOK' ? '12 min read' : '3 min read'}</span>
-             </div>
-           </motion.div>
+          {/* Decorative Backdrops */}
+          <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+            {work.type === 'BOOK' ? <Book size={150} className="text-white" /> : <Terminal size={150} className="text-white" />}
+          </div>
 
-           <motion.div 
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             transition={{ delay: 0.4 }}
-             className={`text-lg text-gray-300 leading-relaxed whitespace-pre-wrap ${work.type === 'POETRY' ? 'font-mono' : 'font-serif'}`}
-           >
-             {work.content}
-           </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-orbitron text-white mb-2 text-glow">{work.title}</h2>
+
+            <div className="text-gray-400 font-mono text-sm mb-8 border-b border-white/10 pb-6">
+              <div className="flex flex-wrap items-center gap-4 mb-4">
+                <span className="flex items-center gap-1"><Calendar size={14} /> {work.year}</span>
+                <span className="px-2 py-0.5 rounded bg-white/10 text-cosmic-cyan">{work.type}</span>
+                <span className="flex items-center gap-1"><Clock size={14} /> {work.type === 'BOOK' ? '12 min read' : '3 min read'}</span>
+              </div>
+
+              {work.type === 'BOOK' && (
+                <a
+                  href={work.title === "Art Face of the Universe" ? "https://www.amazon.com/dp/9334344555" : "https://forbidden-legend.web.app/buy-now.html"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-cosmic-cyan text-black font-orbitron font-bold tracking-wider rounded-lg shadow-[0_0_15px_rgba(14,216,217,0.4)] hover:scale-105 transition-transform inline-block"
+                >
+                  READ NOW
+                </a>
+              )}
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className={`text-lg text-gray-300 leading-relaxed whitespace-pre-wrap ${work.type === 'POETRY' ? 'font-mono' : 'font-serif'}`}
+          >
+            {work.content}
+          </motion.div>
         </div>
       </div>
-      <AboutSection />
     </motion.div>
   );
 }
 
 const ArchiveCard: React.FC<{ work: WritingWork; onClick: () => void; delay: number }> = ({ work, onClick, delay }) => (
-  <motion.div 
+  <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay }}
@@ -832,22 +845,22 @@ const ArchiveCard: React.FC<{ work: WritingWork; onClick: () => void; delay: num
     className="glass-panel p-6 rounded-xl border-l-4 border-l-transparent hover:border-l-cosmic-cyan transition-all cursor-pointer group relative overflow-hidden h-full flex flex-col"
   >
     <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-20 transition-opacity">
-       <ExternalLink size={40} />
+      <ExternalLink size={40} />
     </div>
 
     <div className="flex justify-between items-start mb-4">
       <div className="bg-white/5 p-2 rounded-lg">
-        {work.type === 'BOOK' ? <BookOpen className="text-cosmic-cyan" size={24}/> : <Feather className="text-purple-400" size={24}/>}
+        {work.type === 'BOOK' ? <BookOpen className="text-cosmic-cyan" size={24} /> : <Feather className="text-purple-400" size={24} />}
       </div>
       <span className="text-xs font-mono text-gray-500 border border-white/10 px-2 py-1 rounded">{work.year}</span>
     </div>
-    
+
     <h4 className="text-2xl font-bold font-rajdhani text-white group-hover:text-cosmic-cyan transition-colors mb-2">{work.title}</h4>
-    
+
     <p className="text-gray-400 italic font-serif text-sm flex-grow mb-6 opacity-80">
       "{work.excerpt}"
     </p>
-    
+
     <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-4">
       <span className="text-xs font-mono text-gray-500">{work.type === 'BOOK' ? 'CHRONICLE' : 'VERSE'}</span>
       <div className="flex items-center text-sm text-cosmic-cyan font-orbitron tracking-wider group-hover:translate-x-1 transition-transform">
@@ -864,7 +877,7 @@ const WritingView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const filteredWorks = WRITING_WORKS.filter(w => activeTab === 'ALL' || w.type === activeTab);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, x: 100 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -100 }}
@@ -873,12 +886,12 @@ const WritingView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       <ScrollProgress />
       <SubpageNavbar title="DATA ARCHIVES" onBack={onBack} />
       <LiquidGalaxyBackground />
-      
+
       <AnimatePresence mode='wait'>
         {selectedWork ? (
           <WritingDetailView key="detail" work={selectedWork} onBack={() => setSelectedWork(null)} />
         ) : (
-          <motion.div 
+          <motion.div
             key="list"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -887,42 +900,39 @@ const WritingView: React.FC<{ onBack: () => void }> = ({ onBack }) => {
           >
             {/* Tabs */}
             <div className="flex justify-center mb-12">
-               <div className="flex bg-white/5 rounded-full p-1 border border-white/10 backdrop-blur-md">
-                 {['ALL', 'BOOK', 'POETRY'].map((tab) => (
-                   <button
-                     key={tab}
-                     onClick={() => setActiveTab(tab as any)}
-                     className={`px-8 py-2 rounded-full font-rajdhani font-bold tracking-wider transition-all ${
-                       activeTab === tab 
-                         ? 'bg-cosmic-cyan text-black shadow-[0_0_15px_rgba(14,216,217,0.4)]' 
-                         : 'text-gray-400 hover:text-white'
-                     }`}
-                   >
-                     {tab === 'BOOK' ? 'CHRONICLES' : tab === 'POETRY' ? 'VERSES' : 'ALL ARCHIVES'}
-                   </button>
-                 ))}
-               </div>
+              <div className="flex bg-white/5 rounded-full p-1 border border-white/10 backdrop-blur-md">
+                {['ALL', 'BOOK', 'POETRY'].map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab as any)}
+                    className={`px-8 py-2 rounded-full font-rajdhani font-bold tracking-wider transition-all ${activeTab === tab
+                        ? 'bg-cosmic-cyan text-black shadow-[0_0_15px_rgba(14,216,217,0.4)]'
+                        : 'text-gray-400 hover:text-white'
+                      }`}
+                  >
+                    {tab === 'BOOK' ? 'CHRONICLES' : tab === 'POETRY' ? 'VERSES' : 'ALL ARCHIVES'}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="max-w-7xl mx-auto">
-               <motion.div 
-                 layout
-                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-               >
-                 <AnimatePresence mode="popLayout">
-                   {filteredWorks.map((work, index) => (
-                     <ArchiveCard 
-                       key={work.id} 
-                       work={work} 
-                       onClick={() => setSelectedWork(work)} 
-                       delay={index * 0.1} 
-                     />
-                   ))}
-                 </AnimatePresence>
-               </motion.div>
+              <motion.div
+                layout
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
+                <AnimatePresence mode="popLayout">
+                  {filteredWorks.map((work, index) => (
+                    <ArchiveCard
+                      key={work.id}
+                      work={work}
+                      onClick={() => setSelectedWork(work)}
+                      delay={index * 0.1}
+                    />
+                  ))}
+                </AnimatePresence>
+              </motion.div>
             </div>
-            
-            <AboutSection />
           </motion.div>
         )}
       </AnimatePresence>
@@ -949,14 +959,14 @@ const ContentOrchestrator: React.FC = () => {
     const bootTimer = setTimeout(() => {
       // 2. Start Warp (Zoom out/in effect)
       setIsWarping(true);
-      
+
       // 3. Complete Warp and Enter Hero
       setTimeout(() => {
-         setIsFadingOutLoadingScreen(true); // Start fading out loading screen
-         setTimeout(() => {
-            setIsBooting(false);
-            setIsWarping(false);
-         }, TRANSITION_DURATION); // 500ms for fade out
+        setIsFadingOutLoadingScreen(true); // Start fading out loading screen
+        setTimeout(() => {
+          setIsBooting(false);
+          setIsWarping(false);
+        }, TRANSITION_DURATION); // 500ms for fade out
       }, 2000); // 2s Warp duration for smoother transition
 
     }, 3500); // 3.5s Intro text duration
@@ -976,7 +986,7 @@ const ContentOrchestrator: React.FC = () => {
       setNextPath(null);
       setIsWarping(false);
     } else if (isWarping && !isBooting) {
-       setIsWarping(false);
+      setIsWarping(false);
     }
   };
 
@@ -990,38 +1000,38 @@ const ContentOrchestrator: React.FC = () => {
         exit={{ opacity: 0, scale: 1.5, filter: "blur(50px)" }}
         className="h-screen w-screen flex items-center justify-center bg-black relative z-50 overflow-hidden"
       >
-         <StarBackground />
-         <WarpTransition isActive={isWarping} /> 
-         
-         <AnimatePresence>
-           {!isWarping && (
-             <motion.div 
-               className="relative z-10 flex flex-col items-center"
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               exit={{ opacity: 0, scale: 1.5, filter: "blur(50px)" }} // Fade out into warp
-               transition={{ duration: 0.5 }}
-             >
-                <div className="h-1 w-24 bg-cosmic-cyan mb-8 animate-pulse shadow-[0_0_20px_#0ed8d9]" />
-                <motion.h1 
-                  initial={{ letterSpacing: '0.5em', filter: "blur(10px)" }}
-                  animate={{ letterSpacing: '0.2em', filter: "blur(0px)" }}
-                  transition={{ duration: 1.5 }}
-                  className="text-white font-orbitron text-2xl md:text-4xl text-center px-4"
-                >
-                  INITIALIZING SEQUENCE
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.7 }}
-                  transition={{ delay: 1.5 }}
-                  className="mt-4 font-mono text-cosmic-cyan text-sm"
-                >
-                  LOADING ASSETS...
-                </motion.p>
-             </motion.div>
-           )}
-         </AnimatePresence>
+        <StarBackground />
+        <WarpTransition isActive={isWarping} />
+
+        <AnimatePresence>
+          {!isWarping && (
+            <motion.div
+              className="relative z-10 flex flex-col items-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, scale: 1.5, filter: "blur(50px)" }} // Fade out into warp
+              transition={{ duration: 0.5 }}
+            >
+              <div className="h-1 w-24 bg-cosmic-cyan mb-8 animate-pulse shadow-[0_0_20px_#0ed8d9]" />
+              <motion.h1
+                initial={{ letterSpacing: '0.5em', filter: "blur(10px)" }}
+                animate={{ letterSpacing: '0.2em', filter: "blur(0px)" }}
+                transition={{ duration: 1.5 }}
+                className="text-white font-orbitron text-2xl md:text-4xl text-center px-4"
+              >
+                INITIALIZING SEQUENCE
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.7 }}
+                transition={{ delay: 1.5 }}
+                className="mt-4 font-mono text-cosmic-cyan text-sm"
+              >
+                LOADING ASSETS...
+              </motion.p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     );
   }
@@ -1034,7 +1044,7 @@ const ContentOrchestrator: React.FC = () => {
     >
       <StarBackground />
       <WarpTransition isActive={isWarping} onComplete={onWarpComplete} />
-      
+
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Hero onNavigate={handleNavigate} />} />
